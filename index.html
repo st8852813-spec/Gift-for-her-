@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    overflow-x:hidden;
+}
+
+.container{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+h1{
+    font-size:2.5rem;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:1.2rem;
+    margin-bottom:20px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:#fbbf24;
+    color:black;
+    cursor:pointer;
+}
+
+.gift{
+    font-size:100px;
+    animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+    50%{ transform:translateY(-15px); }
+}
+
+.hidden{
+    display:none;
+}
+
+.card{
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    margin:10px;
+    border-radius:15px;
+    width:280px;
+}
+
+img{
+    border-radius:10px;
+    margin:10px;
+    width:140px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="container" id="page1">
+    <div class="gift">🎁</div>
+    <h1>A Small Surprise For You 😊</h1>
+    <p>Click below...</p>
+    <button onclick="openGift()">Open</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="container hidden" id="page2">
+    <div class="card">3 saal pehle ek random Telegram chat thi...</div>
+    <div class="card">Aur aaj tu meri life ka important part hai ❤️</div>
+    <div class="card">Kabhi expect nahi kiya tha itna bond banega...</div>
+    <button onclick="showPhotos()">Continue</button>
+</div>
+
+<!-- PHOTOS PAGE -->
+<div class="container hidden" id="pagePhotos">
+    <h1>Our Memories 📸</h1>
+
+    <img src="1.jpg">
+    <img src="2.jpg">
+    <img src="3.jpg">
+    <img src="4.jpg">
+
+    <br><br>
+    <button onclick="showMessage()">Next</button>
+</div>
+
+<!-- FINAL MESSAGE -->
+<div class="container hidden" id="page3">
+    <h1>💌</h1>
+    <p id="text"></p>
+    <button onclick="finalPage()">Last</button>
+</div>
+
+<!-- LAST PAGE -->
+<div class="container hidden" id="page4">
+    <h1>🎉 Happy Best Friend Day 🎉</h1>
+    <p>
+        Thank you for being in my life ❤️<br>
+        You really matter to me.
+    </p>
+</div>
+
+<script>
+
+function openGift(){
+    document.getElementById("page1").classList.add("hidden");
+    document.getElementById("page2").classList.remove("hidden");
+}
+
+function showPhotos(){
+    document.getElementById("page2").classList.add("hidden");
+    document.getElementById("pagePhotos").classList.remove("hidden");
+}
+
+function showMessage(){
+    document.getElementById("pagePhotos").classList.add("hidden");
+    document.getElementById("page3").classList.remove("hidden");
+
+    let text = "Honestly... tu meri life ka ek important part ban gayi hai. It all started randomly, but now it actually means something ❤️";
+
+    let i = 0;
+    function type(){
+        if(i < text.length){
+            document.getElementById("text").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type,40);
+        }
+    }
+    type();
+}
+
+function finalPage(){
+    document.getElementById("page3").classList.add("hidden");
+    document.getElementById("page4").classList.remove("hidden");
+}
+
+</script>
+
+</body>
+</html>
